@@ -1,55 +1,79 @@
-var distance=[];
-var value=[];
+
+var X;
+var Y;
+var side=40; 
 
 function setup() {
-  createCanvas(800, 200);
-  background(0);
-  
-  //형태를 다르게 하고
-  bx=[0,50*cos(radians(30)),-50*cos(radians(30))];
-  by=[-50,50*sin(radians(30)),50*sin(radians(30))];
-  cx=[50*cos(radians(30)),0,-50*cos(radians(30))];
-  cy=[-50*sin(radians(30)),50,-50*sin(radians(30))];
-  //위치 일차원 배열에 저장
-  distance=[100,150,220,310,420,550,700];
-  //색상값은 배열에 저장
-  for(var j=0;j<7;j++)
-  {
-    Red=map(j,0,7,3,236);
-    Green=map(j,0,7,169,64);
-    Blue=map(j,0,7,244,122);
-    value[j]=[Red,Green,Blue];
-  }
-  
-} 
 
+  createCanvas(800, 800);
+  X=width/2;
+  Y=0;
+  
+  //background(220);
+  var r_val=0;
+  var g_val=0;
+  var b_val=0;
+  var i,j;
+  var save_x, save_y;
+
+  for(var i=0;i<height;i++)
+  {
+   	var r = map(r_val,0,height,0,57);
+    var g = map(g_val,0,height,0,20);
+    var b = map(b_val,0,height,0,11);
+   	stroke(129+r_val,214+g_val,243+b_val);
+   	//translate(width/2,height/2);
+    line(0,i,width,i);
+    r_val+=0.1;
+    g_val+=0.1;
+    b_val+=0.1;
+  }
+}
 
 function draw() {
- 
-  for(var j=0;j<7;j++)
-  {
-    push();
-    translate(distance[j]-30,100);//
-    rotate(j*PI/12.0);//회전
-    scale(((j+1)*16)/100);//크기scale
-    
-    stroke(value[j][0],value[j][1],value[j][2],50);
-    noFill();
-    endShape(CLOSE);
-    beginShape();
-  	for(var k =0;k<6;k++)
-  	{
-   	 vertex(bx[k],by[k]);
-  	}
-    endShape(CLOSE);
-    beginShape();
-  	for(var m =0;m<6;m++)
-  	{
-   	 vertex(cx[m],cy[m]);
-  	}
-    endShape(CLOSE);
-    pop();
-  }
-  
+  if(mouseIsPressed){
+ 		if(mouseX>X) X+=(side*sin(radians(60))-1);
+ 	 	else X-=(side*sin(radians(60))-1);
+    if(mouseY>Y) Y+=side/2-1;
+    else Y-=side/2-1;
+	}
+  translate(X,Y);
+  cube(0,0,side,196,244,255);
+}
 
+function cube(x1,y1,t_side,cr,cg,cb)
+{
+	top_side(x1,y1,t_side,cr,cg,cb);
+	left_side(x1,y1,t_side,cr,cg,cb);
+	right_side(x1,y1,t_side,cr,cg,cb);
+}
+
+function top_side(x1,y1,t_side,cr,cg,cb)
+{
+  noStroke();
+  fill(cr+65,cg+65,cb+65);
+  var x2 = x1 - t_side*cos(PI/6.0), y2 = y1 - t_side*sin(PI/6.0);
+  var x3 = x1 + t_side*cos(PI/6.0), y3 = y2;
+  var x4 = x1, y4 = y1-t_side;
+  quad(x2,y2,x1,y1,x3,y3,x4,y4); 
+}
+
+function left_side(x1,y1,t_side,cr,cg,cb)
+{
+  noStroke();
+  fill(cr-32,cg-32,cb-32);
+  var x2 = x1 - t_side*cos(PI/6.0), y2 = y1 - t_side*sin(PI/6.0);
+  var x3 = x2, y3 = y2 + t_side;
+  var x4 = x1, y4 = y1+t_side;
+  quad(x1,y1,x2,y2,x3,y3,x4,y4);
+}
+
+function right_side(x1,y1,t_side,cr,cg,cb)
+{
+  noStroke();
+  fill(cr-70,cg-70,cb-70);
+  var x2 = x1 + t_side*cos(PI/6.0), y2 = y1 + t_side*sin(PI/6.0);
+  var x3 = x2, y3 = y2-t_side;
+  var x4 = x1, y4 = y1+t_side;
+  quad(x1,y1,x4,y4,x2,y2,x3,y3);
 }

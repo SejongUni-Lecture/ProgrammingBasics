@@ -4,7 +4,19 @@ I've not uploaded lecture materials due to copyright issues.
 
 ---
 ## Summary
+### Assignments
+<p align = "center">
+<img src = "./img/cube_draft.png", height = 300></img>
+<img src = "./img/cube_tessellation.png", height = 300></img>
+<img src = "./img/snowing.gif", height = 300></img>
+</p>
 
+### Final term project: Drawing board
+<p align = "center">
+<img src = "./img/drawing_board.png", height = 300></img>
+<img src = "./img/drawing_result.png", width = 550></img>
+Works pretty well!<br>
+</p>
 
 
 ---

@@ -1,38 +1,55 @@
-var snow=[];
+var distance=[];
+var value=[];
 
 function setup() {
-  createCanvas(324, 480);
+  createCanvas(800, 200);
+  background(0);
   
-  img=loadImage("assets/nordic.jpg");
-  for(var i=0;i<250;i++)
+  //형태를 다르게 하고
+  bx=[0,50*cos(radians(30)),-50*cos(radians(30))];
+  by=[-50,50*sin(radians(30)),50*sin(radians(30))];
+  cx=[50*cos(radians(30)),0,-50*cos(radians(30))];
+  cy=[-50*sin(radians(30)),50,-50*sin(radians(30))];
+  //위치 일차원 배열에 저장
+  distance=[100,150,220,310,420,550,700];
+  //색상값은 배열에 저장
+  for(var j=0;j<7;j++)
   {
-    snow.push(new Snow());
+    Red=map(j,0,7,3,236);
+    Green=map(j,0,7,169,64);
+    Blue=map(j,0,7,244,122);
+    value[j]=[Red,Green,Blue];
   }
-}
+  
+} 
+
 
 function draw() {
-  background(12,71,103);
-  image(img,0,0);
-  for(var i=0;i<snow.length;i++)
+ 
+  for(var j=0;j<7;j++)
   {
-    snow[i].move();
-    snow[i].display();
-  }
-}
-
-function Snow(){
-	this.x=random(width);
-  this.y=random(height);
-  this.size=random(1,5);
-  this.speed=random(1,3);
-  this.move=function(){
-    this.y+=this.speed;
-    if(this.y>500) this.y=0;
-  }
-  this.display=function(){
-    noStroke();
-    fill(250,243,235);
-    ellipse(this.x,this.y,this.size,this.size);
+    push();
+    translate(distance[j]-30,100);//
+    rotate(j*PI/12.0);//회전
+    scale(((j+1)*16)/100);//크기scale
     
+    stroke(value[j][0],value[j][1],value[j][2],50);
+    noFill();
+    endShape(CLOSE);
+    beginShape();
+  	for(var k =0;k<6;k++)
+  	{
+   	 vertex(bx[k],by[k]);
+  	}
+    endShape(CLOSE);
+    beginShape();
+  	for(var m =0;m<6;m++)
+  	{
+   	 vertex(cx[m],cy[m]);
+  	}
+    endShape(CLOSE);
+    pop();
   }
+  
+
 }
