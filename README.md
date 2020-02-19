@@ -6,9 +6,9 @@ I've not uploaded lecture materials due to copyright issues.
 ## Summary
 ### Assignments
 <p align = "center">
-<img src = "./img/cube_draft.PNG", height = 300></img><br>
-<img src = "./img/cube_tessellation.PNG", height = 300></img>
-<img src = "./img/snowing.gif", height = 300></img>
+<img src = "./img/cube_draft.PNG", width = 600></img><br>
+<img src = "./img/cube_tessellation.PNG", height = 350></img>
+<img src = "./img/snowing.gif", height = 350></img>
 </p>
 
 ### Final term project: Drawing board
