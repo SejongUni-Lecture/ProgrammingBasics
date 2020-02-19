@@ -15,7 +15,7 @@ I've not uploaded lecture materials due to copyright issues.
 <p align = "center">
 <img src = "./img/drawing_board.png", height = 300></img>
 <img src = "./img/drawing_result.png", width = 550></img>
-Works pretty well!<br>
+<br>Works pretty well!<br>
 </p>
 
 
