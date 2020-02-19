@@ -6,8 +6,8 @@ I've not uploaded lecture materials due to copyright issues.
 ## Summary
 ### Assignments
 <p align = "center">
-<img src = "./img/cube_draft.png", height = 300></img>
-<img src = "./img/cube_tessellation.png", height = 300></img>
+<img src = "./img/cube_draft.PNG", height = 300></img>
+<img src = "./img/cube_tessellation.PNG", height = 300></img>
 <img src = "./img/snowing.gif", height = 300></img>
 </p>
 
